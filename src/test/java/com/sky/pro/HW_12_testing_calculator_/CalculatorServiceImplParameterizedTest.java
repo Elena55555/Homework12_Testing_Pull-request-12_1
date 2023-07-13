@@ -21,6 +21,14 @@ public class CalculatorServiceImplParameterizedTest {
 
         );
     }
+    public static Stream<Arguments> paramsForTheDivide_0_Tests() {
+        return Stream.of(
+                Arguments.of(num1, num_0),
+                Arguments.of(num2, num_0)
+        );
+    }
+
+
     @ParameterizedTest
     @MethodSource("paramsForTests")
 
@@ -57,5 +65,16 @@ public class CalculatorServiceImplParameterizedTest {
         String actual = calculatorServiceImpl.divide(num1, num2);
         assertEquals("5 / 5 = 1", actual);
     }
+    @MethodSource("paramsForTheDivide_0_Tests")
+    public void divide_0_ParametrizedTest(Integer num1, int num_0){
+        assertThrows(IllegalArgumentException.class, () ->  calculatorServiceImpl.divide(num1, num_0));
+    }
+
+    @MethodSource("paramsForTheDivide_0_Tests")
+    public void divide_0_ParametrizedTest2(Integer num2, int num_0){
+        assertThrows(IllegalArgumentException.class, () ->  calculatorServiceImpl.divide(num1, num_0));
+    }
+
+
 }
 

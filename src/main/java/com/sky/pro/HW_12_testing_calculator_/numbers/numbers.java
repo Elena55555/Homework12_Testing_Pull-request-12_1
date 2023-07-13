@@ -4,5 +4,6 @@ public class numbers  {
     public static final int num1 = 5;
     public static final  int num2 = 5;
     public static final Integer NULL = null;
+    public static final int num_0 = 0;
 
 }
