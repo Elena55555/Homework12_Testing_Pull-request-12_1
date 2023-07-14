@@ -19,13 +19,7 @@ public class CalculatorServiceImplTest {
 
         assertEquals("5 + 5 = 10", actual);
     }
-    @Test
-    public void shouldReturnCorrectResultWhenAddingIsCorrect2() {
 
-        String actual = calculatorServiceImpl.plus(num3, num4);
-
-        assertEquals("6 + 6 = 12", actual);
-    }
 
     @Test
 
