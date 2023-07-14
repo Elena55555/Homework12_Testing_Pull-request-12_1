@@ -18,7 +18,10 @@ public class CalculatorServiceImplParameterizedTest {
     public static Stream<Arguments> paramsForTests() {
         return Stream.of(
                 Arguments.of(num1, num2, NULL),
-                Arguments.of(num3, num4,NULL)
+                Arguments.of(num3, num4,NULL),
+                Arguments.of(5, 6,NULL),
+                Arguments.of(100, 600,0),
+                Arguments.of(200, 300,0)
 
         );
     }
@@ -36,7 +39,7 @@ public class CalculatorServiceImplParameterizedTest {
         assertThrows(OneOfTheNumbersIsZeroException.class, () -> calculatorServiceImpl.plus(num1, NULL));
 
         String actual = calculatorServiceImpl.plus(num1, num2);
-        int expected =  num1 +  num2;
+        Integer expected =  num1 +  num2;
         assertEquals(num1 + " + " + num2 +" = " + expected   , actual );
     }
 
@@ -50,7 +53,7 @@ public class CalculatorServiceImplParameterizedTest {
 
         String actual = calculatorServiceImpl.minus(num1, num2);
 
-        int expected =  num1  -  num2;
+        Integer expected =  num1  -  num2;
         assertEquals(num1 + " - " + num2 +" = " + expected   , actual );
     }
 
@@ -63,7 +66,7 @@ public class CalculatorServiceImplParameterizedTest {
 
         String actual = calculatorServiceImpl.multiply(num1, num2);
 
-        int expected =  num1  *  num2;
+        Integer expected =  num1  *  num2;
         assertEquals(num1 + "  * " + num2 +" = " + expected   , actual );
     }
 
@@ -75,7 +78,7 @@ public class CalculatorServiceImplParameterizedTest {
         assertThrows(OneOfTheNumbersIsZeroException.class,  () -> calculatorServiceImpl.divide(num1, NULL));
         String actual = calculatorServiceImpl.divide(num1, num2);
 
-        int expected =  num1  /  num2;
+        Integer expected =  num1  /  num2;
         assertEquals(num1 + "/ " + num2 +" = " + expected   , actual );
     }
 
