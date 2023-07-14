@@ -17,11 +17,11 @@ public class CalculatorServiceImpl implements CalculatorService {
         checkTheNumbers  (num1, num2);
         return num1 + " + " + num2 + " = " + (num1 + num2);
     }
-    @Override
-    public String plus2(Integer num3, Integer num4) {
-        checkTheNumbers  (num3, num4);
-        return num3 + " + " + num4 + " = " + (num3 + num4);
-    }
+//    @Override
+//    public String plus2(Integer num3, Integer num4) {
+//        checkTheNumbers  (num3, num4);
+//        return num3 + " + " + num4 + " = " + (num3 + num4);
+//    }
     @Override
     public String minus(Integer num1, Integer num2) {
         checkTheNumbers  (num1, num2);

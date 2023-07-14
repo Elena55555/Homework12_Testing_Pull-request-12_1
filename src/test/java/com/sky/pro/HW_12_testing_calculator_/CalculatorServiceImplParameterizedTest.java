@@ -17,24 +17,14 @@ public class CalculatorServiceImplParameterizedTest {
     private final CalculatorServiceImpl calculatorServiceImpl = new CalculatorServiceImpl();
     public static Stream<Arguments> paramsForTests() {
         return Stream.of(
-                Arguments.of(num1, num2, NULL)
+                Arguments.of(num1, num2,num3, num4, NULL)
+
         );
     }
 
-
-    public static Stream<Arguments> paramsForTests2() {
-
-        return Stream.of(
-
-            Arguments.of(num3, num4,NULL)
-
-        );
-
-    }
     public static Stream<Arguments> paramsForTheDivide_0_Tests() {
         return Stream.of(
-                Arguments.of(num1, num_0),
-                Arguments.of(num2, num_0)
+                Arguments.of(num1,num3, num_0)
         );
     }
 
@@ -49,20 +39,17 @@ public class CalculatorServiceImplParameterizedTest {
         assertEquals("5 + 5 = 10", actual );
     }
 
-
-    @MethodSource("paramsForTests2")
-
+    @MethodSource("paramsForTests")
 
     public void shouldReturnCorrectAdding2(Integer num3, Integer num4, Integer numNull) {
-
         assertThrows(OneOfTheNumbersIsZeroException.class, () -> calculatorServiceImpl.plus(num3, NULL));
 
-
-        String actual = calculatorServiceImpl.plus2(num3, num4);
-
+        String actual = calculatorServiceImpl.plus(num3, num4);
 
         assertEquals("6 + 6 = 12", actual );
     }
+
+
 
     @MethodSource("paramsForTests")
     public void shouldReturnCorrectSubtracting(Integer num1, Integer num2, Integer numNull) {
@@ -74,7 +61,7 @@ public class CalculatorServiceImplParameterizedTest {
     }
 
 
-    @MethodSource("paramsForTests2")
+    @MethodSource("paramsForTests")
 
     public void shouldReturnCorrectSubtracting2(Integer num3, Integer num4, Integer numNull) {
 
@@ -97,7 +84,7 @@ public class CalculatorServiceImplParameterizedTest {
     }
 
 
-    @MethodSource("paramsForTests2")
+    @MethodSource("paramsForTests")
 
     public void shouldReturnCorrectMultiplying2(Integer num3, Integer num4, Integer numNull) {
 
@@ -120,7 +107,7 @@ public class CalculatorServiceImplParameterizedTest {
     }
 
 
-    @MethodSource("paramsForTests2")
+    @MethodSource("paramsForTests")
 
     public void shouldReturnCorrectDividing2(Integer num3, Integer num4, Integer numNull) {
 
