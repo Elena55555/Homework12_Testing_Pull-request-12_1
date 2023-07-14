@@ -17,7 +17,8 @@ public class CalculatorServiceImplParameterizedTest {
     private final CalculatorServiceImpl calculatorServiceImpl = new CalculatorServiceImpl();
     public static Stream<Arguments> paramsForTests() {
         return Stream.of(
-                Arguments.of(num1, num2,num3, num4, NULL)
+                Arguments.of(num1, num2, NULL),
+                Arguments.of(num3, num4,NULL)
 
         );
     }
@@ -35,19 +36,11 @@ public class CalculatorServiceImplParameterizedTest {
         assertThrows(OneOfTheNumbersIsZeroException.class, () -> calculatorServiceImpl.plus(num1, NULL));
 
         String actual = calculatorServiceImpl.plus(num1, num2);
-
-        assertEquals("5 + 5 = 10", actual );
+        int expected =  num1 +  num2;
+        assertEquals(num1 + " + " + num2 +" = " + expected   , actual );
     }
 
-    @MethodSource("paramsForTests")
 
-    public void shouldReturnCorrectAdding2(Integer num3, Integer num4, Integer numNull) {
-        assertThrows(OneOfTheNumbersIsZeroException.class, () -> calculatorServiceImpl.plus(num3, NULL));
-
-        String actual = calculatorServiceImpl.plus(num3, num4);
-
-        assertEquals("6 + 6 = 12", actual );
-    }
 
 
 
@@ -57,22 +50,12 @@ public class CalculatorServiceImplParameterizedTest {
 
         String actual = calculatorServiceImpl.minus(num1, num2);
 
-        assertEquals("5 - 5 = 0", actual);
+        int expected =  num1  -  num2;
+        assertEquals(num1 + " - " + num2 +" = " + expected   , actual );
     }
 
 
-    @MethodSource("paramsForTests")
 
-    public void shouldReturnCorrectSubtracting2(Integer num3, Integer num4, Integer numNull) {
-
-        assertThrows(OneOfTheNumbersIsZeroException.class, () -> calculatorServiceImpl.minus(num3, NULL));
-
-
-        String actual = calculatorServiceImpl.minus(num3, num4);
-
-
-        assertEquals("6 - 6 = 0", actual);
-    }
 
     @MethodSource("paramsForTests")
     public void shouldReturnCorrectMultiplying(Integer num1, Integer num2, Integer numNull) {
@@ -80,44 +63,24 @@ public class CalculatorServiceImplParameterizedTest {
 
         String actual = calculatorServiceImpl.multiply(num1, num2);
 
-        assertEquals("5 * 5 = 25", actual);
+        int expected =  num1  *  num2;
+        assertEquals(num1 + "  * " + num2 +" = " + expected   , actual );
     }
 
 
-    @MethodSource("paramsForTests")
 
-    public void shouldReturnCorrectMultiplying2(Integer num3, Integer num4, Integer numNull) {
-
-        assertThrows(OneOfTheNumbersIsZeroException.class, () -> calculatorServiceImpl.multiply(num3, NULL));
-
-
-        String actual = calculatorServiceImpl.multiply(num3, num4);
-
-
-        assertEquals("6 * 6 = 36", actual);
-
-    }
 
     @MethodSource("paramsForTests")
     public void shouldReturnCorrectDividing(Integer num1, Integer num2, Integer numNull) {
         assertThrows(OneOfTheNumbersIsZeroException.class,  () -> calculatorServiceImpl.divide(num1, NULL));
-
         String actual = calculatorServiceImpl.divide(num1, num2);
-        assertEquals("5 / 5 = 1", actual);
+
+        int expected =  num1  /  num2;
+        assertEquals(num1 + "/ " + num2 +" = " + expected   , actual );
     }
 
 
-    @MethodSource("paramsForTests")
 
-    public void shouldReturnCorrectDividing2(Integer num3, Integer num4, Integer numNull) {
-
-        assertThrows(OneOfTheNumbersIsZeroException.class,  () -> calculatorServiceImpl.divide(num3, NULL));
-
-
-        String actual = calculatorServiceImpl.divide(num3, num4);
-
-        assertEquals("6 / 6 = 1", actual);
-    }
     @MethodSource("paramsForTheDivide_0_Tests")
     public void divide_0_ParametrizedTest(Integer num1, int num_0){
         assertThrows(IllegalArgumentException.class, () ->  calculatorServiceImpl.divide(num1, num_0));
